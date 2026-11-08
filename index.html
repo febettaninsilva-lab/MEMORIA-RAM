@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Célula de Memória RAM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #1a1a2e;
+      color: #fff;
+      padding: 20px;
+    }
+    .container {
+      background: #16213e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    canvas {
+      border: 2px solid #0f3460;
+      border-radius: 8px;
+      background: #0f3460;
+      margin: 15px 0;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-write1 { background: #e94560; color: white; }
+    .btn-write0 { background: #53354a; color: white; }
+    .btn-refresh { background: #00b4d8; color: white; }
+    button:hover { opacity: 0.8; }
+    .status { font-size: 18px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+  <h2>Demonstração de Registrador (4 Bits DRAM)</h2>
+  <p>Cada capacitor representa 1 bit independente. Observe o vazamento individual!</p>
+  
+  <!-- Canvas mais amplo para desenhar 4 capacitores -->
+  <canvas id="ramCanvas" width="550" height="280"></canvas>
+  
+  <div class="status">
+    Valor Armazenado: <strong id="binaryValue" style="color: #00ff88; font-size: 24px;">0000</strong>
+  </div>
+
+  <div class="controls" style="margin-top: 15px;">
+    <button class="btn-write1" onclick="escreverByte([1, 0, 1, 0])">Escrever "1010"</button>
+    <button class="btn-write1" onclick="escreverByte([1, 1, 1, 1])">Escrever "1111"</button>
+    <button class="btn-write0" onclick="escreverByte([0, 0, 0, 0])">Zerar Tudo (0000)</button>
+    <button class="btn-refresh" onclick="executarRefreshGlobal()">Refresh Global</button>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
